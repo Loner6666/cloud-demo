@@ -3,6 +3,7 @@ server:
 spring:
   profiles:
     active: test
+    include: feign # 包含 application-feign.yml 配置文件
   application:
     name: service-order
   cloud:

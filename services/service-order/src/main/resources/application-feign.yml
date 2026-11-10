@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          default: # 默认配置
+            loggerLevel: full # 日志级别
+            connectTimeout: 1000 # 连接超时时间
+            readTimeout: 2000 # 读取超时时间
+          service-product: # 指定服务名称的配置
+            loggerLevel: full # 日志级别
+            connectTimeout: 3000 # 连接超时时间
+            readTimeout: 5000 # 读取超时时间
+
