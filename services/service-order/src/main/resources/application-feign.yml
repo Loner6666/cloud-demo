@@ -11,4 +11,5 @@ spring:
             loggerLevel: full # 日志级别
             connectTimeout: 3000 # 连接超时时间
             readTimeout: 5000 # 读取超时时间
+#            retryer: default # 重试策略，此处不对，使用代码配置重试 Retryer.Default()
 

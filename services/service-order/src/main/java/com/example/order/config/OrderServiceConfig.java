@@ -1,6 +1,7 @@
 package com.example.order.config;
 
 import feign.Logger;
+import feign.Retryer;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,19 @@ public class OrderServiceConfig {
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
+    }
+
+    /**
+     * 开启OpenFeign的重试机制
+     * 默认：(100L, TimeUnit.SECONDS.toMillis(1L), 5)
+     * 也可手动指定：(long period, long maxPeriod, int maxAttempts)
+     * period：重试间隔时间
+     * maxPeriod：最大重试间隔时间
+     * maxAttempts：最大重试次数
+     */
+    @Bean
+    Retryer retryer() {
+        return new Retryer.Default();
     }
 
 }
