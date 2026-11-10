@@ -12,6 +12,11 @@ spring:
         import-check:
           enabled: false
         namespace: ${spring.profiles.active:public}
+# OpenFeign日志级别
+logging:
+  level:
+    com.example.order.feign: debug
+
 
 ---
 spring:
