@@ -23,12 +23,12 @@ public class ProductServiceImpl implements ProductService {
         product.setNum(2);
 
         // 休眠100s，模拟耗时操作
-        try {
-            System.out.println("休眠100s，模拟接口超时~");
-            TimeUnit.SECONDS.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            System.out.println("休眠100s，模拟接口超时~");
+//            TimeUnit.SECONDS.sleep(100);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
         return product;
     }

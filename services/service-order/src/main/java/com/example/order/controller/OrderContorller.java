@@ -30,6 +30,7 @@ public class OrderContorller {
 
     /**
      * 获取动态配置信息
+     * http://localhost:8000/config
      */
     @GetMapping("/config")
     public String getConfig() {
@@ -40,6 +41,7 @@ public class OrderContorller {
 
     /**
      * 创建订单
+     * http://localhost:8000/create?userId=2&productId=100
      */
     @GetMapping("/create")
     public Order createOrder(@RequestParam("userId") Long userId,
