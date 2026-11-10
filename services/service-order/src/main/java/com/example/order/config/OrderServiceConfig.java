@@ -37,7 +37,7 @@ public class OrderServiceConfig {
      * maxPeriod：最大重试间隔时间
      * maxAttempts：最大重试次数
      */
-    @Bean
+//    @Bean
     Retryer retryer() {
         return new Retryer.Default();
     }

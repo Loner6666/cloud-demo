@@ -15,3 +15,7 @@ spring:
 #              - com.example.order.interceptor.XTokenRequestInterceptor # 请求拦截器
 #            retryer: default # 重试策略，此处不对，使用代码配置重试 Retryer.Default()
 
+feign:
+  sentinel:
+    enabled: true # 开启sentinel服务熔断功能
+
