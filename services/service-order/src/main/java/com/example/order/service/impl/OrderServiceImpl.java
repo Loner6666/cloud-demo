@@ -1,6 +1,7 @@
 package com.example.order.service.impl;
 
 import com.example.order.bean.Order;
+import com.example.order.feign.ProductFeignClient;
 import com.example.order.service.OrderService;
 import com.example.product.bean.Product;
 import jakarta.annotation.Resource;
@@ -29,11 +30,16 @@ public class OrderServiceImpl implements OrderService {
     private RestTemplate restTemplate;
     @Resource // 负载均衡，一定导入 spring-cloud-starter-loadbalancer 场景
     private LoadBalancerClient loadBalancerClient;
+    @Resource
+    private ProductFeignClient productFeignClient;
 
 
     @Override
     public Order createOrder(Long productId, Long userId) {
-        Product product = getProductFromRemoteWithLoadBalancerAnnotation(productId);
+//        Product product = getProductFromRemoteWithLoadBalancerAnnotation(productId);
+
+        // 使用Feign完成远程调用
+        Product product = productFeignClient.getProductById(productId);
         Order order = new Order();
         order.setId(1L);
         // 总金额 = 单价 * 数量
