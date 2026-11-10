@@ -33,7 +33,9 @@ public class OrderContorller {
      */
     @GetMapping("/config")
     public String getConfig() {
-        return "order.timeout=" + orderProperties.getTimeout() + "；order.auto-confirm=" + orderProperties.getAutoConfirm();
+        return "order.timeout=" + orderProperties.getTimeout() + "；" +
+                "order.auto-confirm=" + orderProperties.getAutoConfirm() + "；" +
+                "order.db-url=" + orderProperties.getDbUrl();
     }
 
     /**
