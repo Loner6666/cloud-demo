@@ -1,5 +1,6 @@
 package com.example.order.service.impl;
 
+import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.order.bean.Order;
@@ -52,6 +53,14 @@ public class OrderServiceImpl implements OrderService {
         order.setAddress("北京市昌平区");
         // 远程查询商品列表
         order.setProductList(Arrays.asList(product));
+
+//        // 手动添加sentinel资源名
+//        try {
+//            SphU.entry("my-resource");
+//        } catch (BlockException e) {
+//            // throw new RuntimeException(e);
+//            // 返回兜底数据，编码处理
+//        }
 
         return order;
     }

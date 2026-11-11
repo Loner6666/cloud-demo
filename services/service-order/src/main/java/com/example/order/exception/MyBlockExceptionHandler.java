@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  */
 @Component
 public class MyBlockExceptionHandler implements BlockExceptionHandler {
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response,
