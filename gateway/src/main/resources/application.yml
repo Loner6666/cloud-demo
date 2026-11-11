@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+# http请求的默认端口号是80，因此 localhost 等同于 localhost:80 ，后续网关服务可以直接使用 localhost/api/order/xxx 访问
+server:
+  port: 80
+
