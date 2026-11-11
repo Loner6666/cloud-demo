@@ -4,6 +4,7 @@ import com.example.order.bean.Order;
 import com.example.order.properties.OrderProperties;
 import com.example.order.service.OrderService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author：GuoFeng
  * @CreateTime：2026-11-09
  */
+@Slf4j
 //@RefreshScope // Nacos动态刷新配置
 @RestController
 public class OrderContorller {
@@ -69,7 +71,7 @@ public class OrderContorller {
      */
     @GetMapping("/writeDb")
     public String writeDb() {
-        return "write db success ~";
+        return "writeDb success ~";
     }
 
     /**
@@ -78,7 +80,8 @@ public class OrderContorller {
      */
     @GetMapping("/readDb")
     public String readDb() {
-        return "read db success ~";
+        log.info("readDb success ~");
+        return "readDb success ~";
     }
 
 }
