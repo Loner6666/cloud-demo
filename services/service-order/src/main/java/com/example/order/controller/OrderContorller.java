@@ -62,4 +62,23 @@ public class OrderContorller {
         order.setId(Long.MAX_VALUE);
         return order;
     }
+
+    /**
+     * 模拟写数据
+     * http://localhost:8000/writeDb
+     */
+    @GetMapping("/writeDb")
+    public String writeDb() {
+        return "write db success ~";
+    }
+
+    /**
+     * 模拟读数据
+     * http://localhost:8000/readDb
+     */
+    @GetMapping("/readDb")
+    public String readDb() {
+        return "read db success ~";
+    }
+
 }
