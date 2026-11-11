@@ -49,4 +49,17 @@ public class OrderContorller {
         Order order = orderService.createOrder(productId, userId);
         return order;
     }
+
+
+    /**
+     * 秒杀订单
+     * http://localhost:8000/seckill?userId=2&productId=100
+     */
+    @GetMapping("/seckill")
+    public Order seckill(@RequestParam("userId") Long userId,
+                         @RequestParam("productId") Long productId) {
+        Order order = orderService.createOrder(productId, userId);
+        order.setId(Long.MAX_VALUE);
+        return order;
+    }
 }
