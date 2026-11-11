@@ -11,8 +11,12 @@ spring:
             loggerLevel: full # 日志级别
             connectTimeout: 3000 # 连接超时时间
             readTimeout: 5000 # 读取超时时间
+    sentinel:
+      transport:
+        dashboard: localhost:8080 # 指定sentinel控制台地址
+      eager: true # 是否在应用启动时立即初始化 Sentinel，默认为false（只有发起访问了请求才能在控制台看到）
 #            requestInterceptors:
-#              - com.example.order.interceptor.XTokenRequestInterceptor # 请求拦截器
+#              - com.example.order.interceptor.XTokenRequestInterceptor # 请求拦截器（指定服务生效）
 #            retryer: default # 重试策略，此处不对，使用代码配置重试 Retryer.Default()
 
 feign:

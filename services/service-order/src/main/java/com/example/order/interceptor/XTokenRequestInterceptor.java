@@ -15,7 +15,7 @@ import java.util.UUID;
 public class XTokenRequestInterceptor implements RequestInterceptor {
 
     /**
-     * OpenFeign的请求拦截器
+     * OpenFeign的请求拦截器（写在这里全部远程服务调用都生效）
      *
      * @param requestTemplate 请求模板
      */
