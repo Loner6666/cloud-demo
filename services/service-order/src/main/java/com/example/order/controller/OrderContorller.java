@@ -1,7 +1,6 @@
 package com.example.order.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.order.bean.Order;
 import com.example.order.properties.OrderProperties;
 import com.example.order.service.OrderService;
@@ -68,12 +67,17 @@ public class OrderContorller {
         return order;
     }
 
-    public Order seckillFallback(Long userId, Long productId, BlockException e) {
+    /**
+     * seckill的降级方法
+     * blockHandler 只能处理 BlockException 异常，回调方法中最后一个参数只能是 BlockException 类型的异常，否则无法生效
+     * fallback 可以处理任何异常，回调方法中的最后一个参数是 Throwable 类型的异常
+     */
+    public Order seckillFallback(Long userId, Long productId, Throwable exception) {
         System.out.println("seckillFallback ~~~");
         Order order = new Order();
         order.setId(productId);
         order.setUserId(userId);
-        order.setAddress("异常信息：" + e.getClass());
+        order.setAddress("异常信息：" + exception.getClass());
         return order;
     }
 
