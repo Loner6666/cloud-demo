@@ -29,7 +29,7 @@ spring:
                 matchTrailingSlash: true # 默认true，代表path结尾带不带/都一样，如“/api”和“/api/”，false代表这两路径不一样
           filters: # 过滤器，对请求和响应进行过滤处理
             - RewritePath=/api/order/?(?<segment>.*),/$\{segment} # 重写路径，将请求路径中的“/api/order/”替换为“/”
-#            - AddResponseHeader=X-Response-Abc, 123 # 添加响应头
+            - OnceToken=X-Response-Token, jwt # 自定义过滤器OnceTokenGatewayFilterFactory，添加一个一次性令牌，支持 uuid，jwt等各种格式
           order: 1
         - id: product-route
           uri: lb://service-product
