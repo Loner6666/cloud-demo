@@ -1,6 +1,8 @@
 spring:
   cloud:
     gateway:
+      default-filters: # 默认过滤器，对所有路由生效
+        - AddResponseHeader=X-Response-Abc, 123
       routes: # 路由配置
         - id: bing-route # 路由的ID
           uri: https://cn.bing.com/ # 目标服务地址，lb是LoadBalancer的缩写代表负载均衡
@@ -27,7 +29,7 @@ spring:
                 matchTrailingSlash: true # 默认true，代表path结尾带不带/都一样，如“/api”和“/api/”，false代表这两路径不一样
           filters: # 过滤器，对请求和响应进行过滤处理
             - RewritePath=/api/order/?(?<segment>.*),/$\{segment} # 重写路径，将请求路径中的“/api/order/”替换为“/”
-            - AddResponseHeader=X-Response-Abc, 123 # 添加响应头
+#            - AddResponseHeader=X-Response-Abc, 123 # 添加响应头
           order: 1
         - id: product-route
           uri: lb://service-product
