@@ -12,6 +12,11 @@ spring:
               args: # 参数
                 param: q # 查询参数名
                 regexp: haha # 正则表达式，符合查询参数则路由到目标服务
+#            - Vip=user,guofeng # 自定义断言工厂 VipRoutePredicateFactory ，这里是VIP断言，符合VIP则路由到目标服务，短写法
+            - name: Vip
+              args:
+                param: user
+                value: guofeng # 长写法 ，请求路径：http://localhost/search?q=haha&user=guofeng
           order: 10 # 路由的优先级，数字越小优先级越高
         - id: order-route
           uri: lb://service-order
