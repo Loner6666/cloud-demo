@@ -4,8 +4,14 @@ spring:
       routes: # 路由配置
         - id: bing-route # 路由的ID
           uri: https://cn.bing.com/ # 目标服务地址，lb是LoadBalancer的缩写代表负载均衡
-          predicates: # 断言，符合条件则路由到目标服务
-            - Path=/** # 断言，路径匹配，符合则路由到目标服务
+          predicates: # 断言，符合条件则路由到目标服务，如：http://localhost/search?q=haha
+            - name: Path # 断言类型，这里是路径匹配
+              args: # 参数
+                patterns: /search # 断言参数，符合路径则路由到目标服务
+            - name: Query # 断言类型，这里是查询参数匹配
+              args: # 参数
+                param: q # 查询参数名
+                regexp: haha # 正则表达式，符合查询参数则路由到目标服务
           order: 10 # 路由的优先级，数字越小优先级越高
         - id: order-route
           uri: lb://service-order
@@ -18,6 +24,6 @@ spring:
         - id: product-route
           uri: lb://service-product
           predicates:
-            - Path=/api/product/**
+            - Path=/api/product/** # 断言，路径匹配，符合则路由到目标服务
           order: 2
 
