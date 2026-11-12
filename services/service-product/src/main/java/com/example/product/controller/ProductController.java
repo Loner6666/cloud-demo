@@ -6,15 +6,15 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Description：
  * @Author：GuoFeng
  * @CreateTime：2026-11-09
  */
+@RequestMapping("/api/product")
 @RestController
 public class ProductController {
     @Resource
