@@ -6,6 +6,7 @@ import com.example.order.properties.OrderProperties;
 import com.example.order.service.OrderService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author：GuoFeng
  * @CreateTime：2026-11-09
  */
+//@CrossOrigin // 允许跨域
 //@RequestMapping("/api/order")
 @Slf4j
 //@RefreshScope // Nacos动态刷新配置
