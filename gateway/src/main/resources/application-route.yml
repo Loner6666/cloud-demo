@@ -2,16 +2,19 @@ spring:
   cloud:
     gateway:
       routes: # 路由配置
-        - id: bing-route
-          uri: https://cn.bing.com/
+        - id: bing-route # 路由的ID
+          uri: https://cn.bing.com/ # 目标服务地址，lb是LoadBalancer的缩写代表负载均衡
+          predicates: # 断言，符合条件则路由到目标服务
+            - Path=/** # 断言，路径匹配，符合则路由到目标服务
+          order: 10 # 路由的优先级，数字越小优先级越高
+        - id: order-route
+          uri: lb://service-order
           predicates:
-            - Path=/**
-          order: 10
-        - id: order-route # 路由的ID
-          uri: lb://service-order # 目标服务地址，lb是LoadBalancer的缩写代表负载均衡
-          predicates: # 断言，判断请求是否符合要求
-            - Path=/api/order/** # 断言，路径匹配，符合则路由到目标服务
-          order: 1 # 路由的优先级，数字越小优先级越高
+            - name: Path
+              args:
+                patterns: /api/order/**
+                matchTrailingSlash: true # 默认true，代表path结尾带不带/都一样，如“/api”和“/api/”，false代表这两路径不一样
+          order: 1
         - id: product-route
           uri: lb://service-product
           predicates:
